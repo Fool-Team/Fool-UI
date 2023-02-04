@@ -1,5 +1,6 @@
 @import './mixins/mixin.scss';
 
+// .fool-button
 @include b(button) {
     display: inline-block;
     line-height: 1;
@@ -38,6 +39,7 @@
     }
 
     // 朴素按钮样式
+    // .fool-button.is-plain
     @include when(plain) {
         &:hover,
         &:focus {
@@ -46,18 +48,22 @@
             color: #409eff;
         }
     }
+    // .fool-button.is-round
     @include when(round) {
         border-radius: 20px;
         padding: 12px 23px;
     }
+    // .fool-button.is-circle
     @include when(circle) {
         border-radius: 50%;
         padding: 12px;
     }
+    // .fool-button.is.disable
     @include when(disable) {
         cursor: no-drop;
     }
 
+    // .fool-button--primary
     @include m(primary) {
         color: #fff;
         background-color: #66b1ff;
@@ -69,6 +75,7 @@
             color: #fff;
         }
 
+        // .fool-button--primary.is-plain
         @include when(plain) {
             color: #409eff;
             background: #ecf5ff;
@@ -81,6 +88,7 @@
         }
     }
 
+    // .fool-button--success
     @include m(success) {
         color: #fff;
         background-color: #67c23a;
@@ -92,6 +100,7 @@
             color: #fff;
         }
 
+        // .fool-button--success.is-plain
         @include when(plain) {
             color: #67c23a;
             background: #c2e7b0;
@@ -104,6 +113,7 @@
         }
     }
 
+    // .fool-button--info
     @include m(info) {
         color: #fff;
         background-color: #909399;
@@ -115,6 +125,7 @@
             color: #fff;
         }
 
+        // .fool-button--info.is-plain
         @include when(plain) {
             color: #909399;
             background: #d3d4d6;
@@ -127,6 +138,7 @@
         }
     }
 
+    // .fool-button--warning
     @include m(warning) {
         color: #fff;
         background-color: #e6a23c;
@@ -138,6 +150,7 @@
             color: #fff;
         }
 
+        // .fool-button--warning.is-plain
         @include when(plain) {
             color: #e6a23c;
             background: #f5dab1;
@@ -150,6 +163,7 @@
         }
     }
 
+    // .fool-button--danger
     @include m(danger) {
         color: #fff;
         background-color: #f56c6c;
@@ -161,6 +175,7 @@
             color: #fff;
         }
 
+        // .fool-button--danger.is-plain
         @include when(plain) {
             color: #f56c6c;
             background: #fbc4c4;
