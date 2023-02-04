@@ -1,0 +1,52 @@
+// 提供方法
+@import '../common/var.scss';
+
+/// 生成指定功能块内部样式
+/// b 全称 block
+/// demo：@includ b(button) { width: 0px } --> .fool-button { width: 0px }
+///
+/// @param {string} $block 组件名 / 功能块名
+@mixin b($block) {
+    $B: $namespace + '-' + $block;
+    .#{$B} {
+        @content;
+    }
+}
+
+/// 生成指定功能块的某个状态的内部样式
+/// demo：@include b(button) { @include when(click) {color: red} } --> .fool-button.is-click{color: red}
+///
+/// @param { string } $state 状态名
+@mixin when($state) {
+    @at-root {
+        &.#{$state-prefix + $state} {
+            @content;
+        }
+    }
+}
+
+/// 生成指定元素的的不同版本或者不同状态
+/// m 全称 modifier(修饰符)
+/// demo：@include b(button) { @clude m(success) { color: green } --> fool-button--primary { color: green }
+///
+/// @param  {string} $modifier 修饰符
+@mixin m($modifier) {
+    @at-root {
+        #{& + $modifier-separator + $modifier} {
+            @content;
+        }
+    }
+}
+
+/// 生成指定功能块的子元素的样式
+/// e 全称 element
+/// demo：@include b(card) { @clude(header) } --> fool-card__header
+///
+/// @param {string} $element 子元素名
+@mixin e($element) {
+    @at-root {
+        #{& + $element-separator + $element} {
+            @content;
+        }
+    }
+}
