@@ -11,32 +11,32 @@ import Switch from './components/switch/switch.vue'
 import CheckboxGroup from './components/CheckBox-group/checkbox-group.vue'
 import Form from './components/form/form.vue'
 import FormItem from './components/form-item/form-item.vue'
-import './fonts/iconfont.css'
+import './theme-thalk/fonts/iconfont.css'
 
 const components = [
-  Button,
-  Dialog,
-  Input,
-  Checkbox,
-  Radio,
-  RadioGroup,
-  Switch,
-  CheckboxGroup,
-  Form,
-  FormItem
+    Button,
+    Dialog,
+    Input,
+    Checkbox,
+    Radio,
+    RadioGroup,
+    Switch,
+    CheckboxGroup,
+    Form,
+    FormItem
 ]
 // 定义install方法
-const install = function(Vue) {
-  // 注册所有的组件
-  components.forEach(component => {
-    Vue.component(component.name, component)
-  })
+const install = function (Vue) {
+    // 注册所有的组件
+    components.forEach(component => {
+        Vue.component(component.name, component)
+    })
 }
 // 判断是否直接引入文件，如果是，就不用调用Vue.use()
 if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue)
+    install(window.Vue)
 }
 // 导出install方法
 export default {
-  install
+    install
 }
