@@ -7,10 +7,11 @@
 ///
 /// @param {string} $block 组件名 / 功能块名
 @mixin b($block) {
-    $B: $namespace + '-' + $block;
-    .#{$B} {
-        @content;
-    }
+  $B: $namespace +'-'+$block;
+
+  .#{$B} {
+    @content;
+  }
 }
 
 /// 生成指定功能块的某个状态的内部样式
@@ -18,11 +19,11 @@
 ///
 /// @param { string } $state 状态名
 @mixin when($state) {
-    @at-root {
-        &.#{$state-prefix + $state} {
-            @content;
-        }
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
     }
+  }
 }
 
 /// 生成指定元素的的不同版本或者不同状态
@@ -31,11 +32,11 @@
 ///
 /// @param  {string} $modifier 修饰符
 @mixin m($modifier) {
-    @at-root {
-        #{& + $modifier-separator + $modifier} {
-            @content;
-        }
+  @at-root {
+    #{& + $modifier-separator + $modifier} {
+      @content;
     }
+  }
 }
 
 /// 生成指定功能块的子元素的样式
@@ -44,9 +45,25 @@
 ///
 /// @param {string} $element 子元素名
 @mixin e($element) {
-    @at-root {
-        #{& + $element-separator + $element} {
-            @content;
-        }
+  @at-root {
+    #{& + $element-separator + $element} {
+      @content;
     }
+  }
+}
+
+/// 验证是否存在 $map 中是否存在 $key
+/// 
+/// @param {string} $key 键
+/// @param {map} $map Maps集合
+@mixin res($key, $map: $breakpoints) {
+  @if map-has-key($map, $key) {
+    @media only screen and #{unquote(map-get($map, $key))} {
+      @content;
+    }
+  }
+
+  @else {
+    @warn '未定义该断点：`#{$map}`'
+  }
 }

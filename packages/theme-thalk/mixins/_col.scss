@@ -1,0 +1,41 @@
+@use './mixin.scss' as *;
+
+@mixin col-size($size) {
+  @include res($size) {
+    .#{$namespace}-col-#{$size}-0 {
+      display: none;
+      font-size: 20px - 1;
+
+      // to avoid introducing !important syntax, redundant css rule is required due to selector priority.
+      // 具体作用不知
+      @include when(gutterd) {
+        display: none;
+      }
+    }
+
+    @for $i from 0 through 24 {
+      .#{$namespace}-col-#{$size}-#{$i} {
+        @if $i !=0 {
+          display: block
+        }
+
+        width: 1 / 24 * $i * 100 * 1%;
+        flex: 0 0 1 / 24 * $i * 100 * 1%;
+      }
+
+      .#{$namespace}-col-#{$size}-offset-#{$i} {
+        margin-left: 1 / 24 * $i * 100 * 1%;
+      }
+
+      .#{$namespace}-col-#{$size}-pull-#{$i} {
+        position: relative;
+        right: 1 / 24 * $i * 100 * 1%;
+      }
+
+      .#{$namespace}-col-#{$size}-push-#{$i} {
+        position: relative;
+        left: 1 / 24 * $i * 100 * 1%;
+      }
+    }
+  }
+}

@@ -8,30 +8,27 @@
     <fool-button type="warning" icon="audio"></fool-button>
     <fool-button type="primary" @click="visible = true">dialog开关</fool-button>
     <fool-dialog top="10%" :visible.sync="visible">
-      <template v-slot:title> hello </template>
+      <template v-slot:title>hello</template>
       <ul>
         <li>1</li>
         <li>2</li>
         <li>3s</li>
       </ul>
-      <template v-slot:footer
-        ><fool-button type="primary" @click="visible = false">确认</fool-button
-        ><fool-button @click="visible = false">取消</fool-button></template
-      >
+      <template v-slot:footer>
+        <fool-button type="primary" @click="visible = false">确认</fool-button>
+        <fool-button @click="visible = false">取消</fool-button>
+      </template>
     </fool-dialog>
   </div>
 </template>
-
 <script>
 export default {
-  name: "App",
+  name: 'App',
   components: {},
-  data() {
+  data () {
     return {
       visible: false
-    };
+    }
   }
-};
+}
 </script>
-
-<style lang="scss"></style>

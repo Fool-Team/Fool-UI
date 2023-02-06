@@ -1,0 +1,39 @@
+@use './mixins/mixin.scss' as *;
+@use './mixins/col' as *;
+
+@include b(col) {
+  box-sizing: border-box;
+}
+
+@for $i from 1 to 25 {
+  .#{$namespace}-col-#{$i} {
+    max-width: (1 / 24 * $i * 100) * 1%;
+    flex: 0 0 (1 / 24 * $i * 100) * 1%;
+  }
+
+  .#{$namespace}-col-offset-#{$i} {
+    margin-left: (1 / 24 * $i * 100) * 1%;
+  }
+
+  .#{$namespace}-col-push-#{$i} {
+    position: relative;
+    left: (1 / 24 * $i * 100) * 1%;
+  }
+
+  .#{$namespace}-col-pull-#{$i} {
+    position: relative;
+    right: (1 / 24 * $i * 100) * 1%;
+  }
+
+  .#{$namespace}-col-pull-#{$i} {
+    max-width: (1 / 24 * $i * 100) * 1%;
+    flex: 0 0 (1 / 24 * $i * 100) * 1%;
+  }
+}
+
+
+@include col-size(xs);
+@include col-size(sm);
+@include col-size(md);
+@include col-size(lg);
+@include col-size(xl);

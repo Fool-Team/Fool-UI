@@ -11,6 +11,8 @@ import Switch from './components/switch/switch.vue'
 import CheckboxGroup from './components/CheckBox-group/checkbox-group.vue'
 import Form from './components/form/form.vue'
 import FormItem from './components/form-item/form-item.vue'
+import Row from './components/row/row.vue'
+import Col from './components/col/col.vue'
 import './theme-thalk/fonts/iconfont.css'
 
 const components = [
@@ -23,7 +25,9 @@ const components = [
     Switch,
     CheckboxGroup,
     Form,
-    FormItem
+    FormItem,
+    Row,
+    Col
 ]
 // 定义install方法
 const install = function (Vue) {
