@@ -2,204 +2,144 @@
 @use './mixins/config.scss' as *;
 
 // .fool-button
-@include b(button) {
-  display: inline-block;
-  line-height: 1;
-  white-space: nowrap;
-  cursor: pointer;
-  background: #ffffff;
-  border: 1px solid #dcdfe6;
-  color: #606266;
-  -webkit-appearance: none;
-  text-align: center;
+@function hsb($h-hsb, $s-hsb, $b-hsb, $a: 1) {
+  @if $b-hsb ==0 {
+    @return hsla(0, 0, 0, $a);
+  }
+
+  @else {
+    $l-hsl: ($b-hsb/2) * (2 - ($s-hsb/100));
+    $s-hsl: ($b-hsb * $s-hsb) / if($l-hsl < 50, $l-hsl * 2, 200 - $l-hsl * 2);
+    @return hsla($h-hsb, $s-hsl, $l-hsl, $a);
+  }
+}
+
+@function hsb-saturate($s, $a) {
+  @if $s ==0 {
+    @return 0;
+  }
+
+  @else {
+    @return $s +$a;
+  }
+}
+
+@mixin buttonize($h, $s, $b, $light: 0) {
+  $color: hsb($h, $s, $b);
+  $color-dark: hsb($h, hsb-saturate($s, 10), $b);
+  $inset-top: inset 0 1px 0 hsb($h, $s - 20, $b + 10);
+  $inset-bottom: inset 0 -1px 0 hsb($h, hsb-saturate($s, 10), $b - 10);
+  $inset: inset 0 0 0 1px hsb($h, hsb-saturate($s, -10), $b);
+
+  background-color: $color;
+  background-image: linear-gradient(to bottom, $color, $color-dark);
+  border: 1px solid hsb($h, hsb-saturate($s, 20), $b - 20);
+  box-shadow: $inset-top, $inset-bottom, $inset, 0 2px 4px rgba(black, 0.2);
+
+  @if $light ==1 {
+    color: hsb($h, hsb-saturate($s, 40), $b - 40);
+    text-shadow: 0 1px 0 rgba(white, 0.5);
+  }
+
+  @else {
+    color: white;
+    text-shadow: 0 1px 2px rgba(black, 0.3);
+  }
+
+  &:hover,
+  &:focus {
+    background: $color-dark;
+    border-color: hsb($h, hsb-saturate($s, 40), $b - 40);
+    box-shadow: $inset-top, $inset-bottom, $inset;
+  }
+
+  &:active {
+    background: $color-dark;
+    box-shadow: inset 0 2px 3px rgba(black, 0.2);
+  }
+}
+
+.fool-button {
+  @include buttonize(0, 0, 95, 1);
+  // height: 50px;
   box-sizing: border-box;
-  outline: none;
+  height: 40px;
+  font-weight: bold;
   margin: 0;
-  transition: 0.1s;
-  font-weight: 500;
-  //禁止元素的文字被选中
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 9px 16px;
   -moz-user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  padding: 12px 20px;
-  font-size: 14px;
+  margin: 0;
+  transition: all 30ms ease-out;
+  vertical-align: top;
+}
+
+.fool-button--primary {
+  @include buttonize(199, 71, 89);
+}
+
+.fool-button--success {
+  @include buttonize(97, 42, 80);
+}
+
+.fool-button--warning {
+  @include buttonize(26, 77, 96);
+}
+
+.fool-button--danger {
+  @include buttonize(4, 58, 93);
+}
+
+.fool-button--info {
+  @include buttonize(10, 0, 50);
+}
+
+.fool-button.is-round {
+  border-radius: 19px;
+  padding: 9px 19px 9px;
+}
+
+.fool-button.is-circle {
+  border-radius: 50%;
+  padding: 9px;
+  width: 40px;
+}
+
+.is-icon {
+  margin-left: 5px;
+}
+
+// 禁用的样式
+.fool-button.is-disabled {
+  cursor: no-drop;
+  position: relative;
+}
+
+.fool-button.is-disabled .mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(148, 146, 146, 0.5);
+  left: 0;
+  top: 0;
+  box-shadow: 2px 2px 3px rgba(216, 213, 213, 0.5);
   border-radius: 4px;
+  z-index: 100;
+}
 
-  &:hover,
-  &:focus {
-    color: #409eff;
-    border-color: #c6e2ff;
-    background-color: #ecf5ff;
-  }
+.fool-button.is-round .mask {
+  border-radius: 20px;
+}
 
-  & [class*='#{$namespace}-icon'] {
-    &+span {
-      margin-left: 5px;
-    }
-  }
-
-  // 朴素按钮样式
-  // .fool-button.is-plain
-  @include when(plain) {
-
-    &:hover,
-    &:focus {
-      background: #fff;
-      border-color: #489eff;
-      color: #409eff;
-    }
-  }
-
-  // .fool-button.is-round
-  @include when(round) {
-    border-radius: 20px;
-    padding: 12px 23px;
-  }
-
-  // .fool-button.is-circle
-  @include when(circle) {
-    border-radius: 50%;
-    padding: 12px;
-  }
-
-  // .fool-button.is.disable
-  @include when(disable) {
-    cursor: no-drop;
-  }
-
-  // .fool-button--primary
-  @include m(primary) {
-    color: #fff;
-    background-color: #66b1ff;
-    border-color: #66b1ff;
-
-    &:hover,
-    &:focus {
-      background: #66b1ff;
-      background-color: #66b1ff;
-      color: #fff;
-    }
-
-    // .fool-button--primary.is-plain
-    @include when(plain) {
-      color: #409eff;
-      background: #ecf5ff;
-
-      &:hover,
-      &:focus {
-        background: #409eff;
-        border-color: #409eff;
-        color: #fff;
-      }
-    }
-  }
-
-  // .fool-button--success
-  @include m(success) {
-    color: #fff;
-    background-color: #67c23a;
-    border-color: #67c23a;
-
-    &:hover,
-    &:focus {
-      background: #85ce61;
-      background-color: #85ce61;
-      color: #fff;
-    }
-
-    // .fool-button--success.is-plain
-    @include when(plain) {
-      color: #67c23a;
-      background: #c2e7b0;
-
-      &:hover,
-      &:focus {
-        background: #67c23a;
-        border-color: #67c23a;
-        color: #fff;
-      }
-    }
-  }
-
-  // .fool-button--info
-  @include m(info) {
-    color: #fff;
-    background-color: #909399;
-    border-color: #909399;
-
-    &:hover,
-    &:focus {
-      background: #a6a9ad;
-      background-color: #a6a9ad;
-      color: #fff;
-    }
-
-    // .fool-button--info.is-plain
-    @include when(plain) {
-      color: #909399;
-      background: #d3d4d6;
-
-      &:hover,
-      &:focus {
-        background: #909399;
-        border-color: #909399;
-        color: #fff;
-      }
-    }
-  }
-
-  // .fool-button--warning
-  @include m(warning) {
-    color: #fff;
-    background-color: #e6a23c;
-    border-color: #e6a23c;
-
-    &:hover,
-    &:focus {
-      background: #ebb563;
-      background-color: #ebb563;
-      color: #fff;
-    }
-
-    // .fool-button--warning.is-plain
-    @include when(plain) {
-      color: #e6a23c;
-      background: #f5dab1;
-
-      &:hover,
-      &:focus {
-        background: #e6a23c;
-        border-color: #e6a23c;
-        color: #fff;
-      }
-    }
-  }
-
-  // .fool-button--danger
-  @include m(danger) {
-    color: #fff;
-    background-color: #f56c6c;
-    border-color: #f56c6c;
-
-    &:hover,
-    &:focus {
-      background: #f78989;
-      background-color: #f78989;
-      color: #fff;
-    }
-
-    // .fool-button--danger.is-plain
-    @include when(plain) {
-      color: #f56c6c;
-      background: #fbc4c4;
-
-      &:hover,
-      &:focus {
-        background: #f56c6c;
-        border-color: #f56c6c;
-        color: #fff;
-      }
-    }
-  }
+.fool-button.is-circle .mask {
+  border-radius: 50%;
 }
