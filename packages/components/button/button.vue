@@ -4,34 +4,29 @@
     :class="[
       `fool-button--${type}`,
       {
-        'is-plain': plain,
         'is-round': round,
         'is-circle': circle,
         'is-disabled': disabled
       }
     ]"
-    @click="handleClick"
+    @click="resource ? (debounce ? fndebounce() : throttle()) : handleclick()"
     :disabled="disabled"
   >
-    <i v-if="icon" :class="`fool-icon-${icon}`"></i>
-    <!-- 如果没传入文本插槽，则不显示span内容 -->
-    <span v-if="$slots.default"><slot></slot></span>
+    <div class="mask" v-if="disabled"></div>
+    <i :class="`fool-icon-${icon}`" v-if="icon"></i>
+    <span v-if="$slots.default" :class="icon ? 'is-icon' : 'is-default'">
+      <slot></slot>
+    </span>
   </button>
 </template>
 
 <script>
 export default {
-  name: "foolButton",
-  // 此时对props进行校验，值接收string类型的type值
+  name: 'foolButton',
   props: {
     type: {
       type: String,
-      // 设置默认值：如果不传值，那么使用default
-      default: "defalut"
-    },
-    plain: {
-      type: Boolean,
-      default: false
+      default: 'default'
     },
     round: {
       type: Boolean,
@@ -43,26 +38,56 @@ export default {
     },
     icon: {
       type: String,
-      default: ""
+      default: ''
     },
     disabled: {
       type: Boolean,
       default: false
+    },
+    resource: {
+      type: Boolean,
+      default: false
+    },
+    debounce: {
+      type: Boolean,
+      default: false
     }
   },
-  created() {
-    // 显示所有插槽
-    // console.log(this.$slots)
+  data() {
+    return {
+      timer: null,
+      flag: true
+    }
   },
   methods: {
-    // 定义一个点击事件，这个点击事件的作用是调用父组件中的点击事件，并且回调
-    handleClick(e) {
-      this.$emit("click", e);
+    fndebounce(e) {
+      // this.$emit('click', e)
+      if (this.timer != null) {
+        clearTimeout(this.timer)
+      }
+      this.timer = setTimeout(() => {
+        this.$emit('click', e)
+        // console.log('防抖')
+      }, 300)
+    },
+    throttle(e) {
+      if (this.flag) {
+        setTimeout(() => {
+          this.$emit('click', e)
+          // console.log('节流')
+          this.flag = true
+        }, 300)
+        this.flag = false
+      }
+    },
+    handleclick(e) {
+      this.$emit('click', e)
+      // console.log('正常')
     }
   }
-};
+}
 </script>
 
-<style lang="scss" scoped>
-@import "../../theme-thalk/button.scss";
+<style scoped lang="scss">
+@import '../../theme-thalk/button.scss';
 </style>

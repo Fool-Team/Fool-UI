@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <fool-button icon="bluetoothon"></fool-button>
-    <fool-button type="primary" icon="camera">照相机</fool-button>
-    <fool-button type="success" icon="course"></fool-button>
+    <fool-button type="primary" icon="delete">照相机</fool-button>
+    <fool-button type="success" circle round>机</fool-button>
     <fool-button type="info" icon="bluetooth_link"></fool-button>
     <fool-button type="danger" icon="addto"></fool-button>
     <fool-button type="warning" icon="audio"></fool-button>
-    <fool-button type="primary" @click="visible = true">dialog开关</fool-button>
+    <fool-button type="primary" @click="visible = true" round resource debounce
+      >dialog开关</fool-button
+    >
     <fool-dialog top="10%" :visible.sync="visible">
       <template v-slot:title>hello</template>
       <ul>
@@ -25,7 +27,7 @@
 export default {
   name: 'App',
   components: {},
-  data () {
+  data() {
     return {
       visible: false
     }
