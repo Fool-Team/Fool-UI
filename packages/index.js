@@ -13,34 +13,39 @@ import Form from './components/form/form.vue'
 import FormItem from './components/form-item/form-item.vue'
 import Row from './components/row/row.vue'
 import Col from './components/col/col.vue'
+import Carousel from './components/carousel/carousel.vue'
+import CarouselItem from './components/carousel/carousel-item.vue'
 import './theme-thalk/fonts/iconfont.css'
+import './theme-thalk/common/reset.scss'
 
 const components = [
-    Button,
-    Dialog,
-    Input,
-    Checkbox,
-    Radio,
-    RadioGroup,
-    Switch,
-    CheckboxGroup,
-    Form,
-    FormItem,
-    Row,
-    Col
+  Button,
+  Dialog,
+  Input,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  Switch,
+  CheckboxGroup,
+  Form,
+  FormItem,
+  Row,
+  Col,
+  Carousel,
+  CarouselItem
 ]
 // 定义install方法
 const install = function (Vue) {
-    // 注册所有的组件
-    components.forEach(component => {
-        Vue.component(component.name, component)
-    })
+  // 注册所有的组件
+  components.forEach(component => {
+    Vue.component(component.name, component)
+  })
 }
 // 判断是否直接引入文件，如果是，就不用调用Vue.use()
 if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue)
+  install(window.Vue)
 }
 // 导出install方法
 export default {
-    install
+  install
 }
