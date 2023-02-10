@@ -1,5 +1,5 @@
-// 提供方法
-@import '../common/var.scss';
+@use './config.scss' as *;
+@use '../common/var.scss' as *;
 
 /// 生成指定功能块内部样式
 /// b 全称 block
