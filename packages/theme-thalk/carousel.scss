@@ -1,0 +1,103 @@
+@use './mixins/mixin.scss' as *;
+@use './mixins/config.scss' as *;
+@import './common/var.scss';
+
+@include b(carousel) {
+  position: relative;
+
+  @include m(horizontal) {
+    overflow-x: hidden;
+  }
+
+  @include m(vertical) {
+    overflow-y: hidden;
+
+    .#{$namespace}-carousel__arrow {
+      display: none;
+    }
+  }
+
+  @include e(container) {
+    position: relative;
+  }
+
+  @include e(arrow) {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: .3s;
+
+    @include m(left) {
+      left: 10px;
+    }
+
+    @include m(right) {
+      right: 10px;
+    }
+  }
+
+  @include e(indicators) {
+    position: absolute;
+    z-index: 2;
+
+    @include m(horizontal) {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+
+    @include m(vertical) {
+      right: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+
+  @include e(indicator) {
+    padding: $--carousel-indicator-padding-horizontal $--carousel-indicator-padding-vertival;
+    width: $--carousel-indicator-width;
+    height: $--carousel-indicator-height;
+
+    @include when(active) {
+      .#{$namespace}-carousel__button {
+        background-color: $--white;
+      }
+    }
+
+    @include m(horizontal) {
+      display: inline-block;
+    }
+
+    @include m(vertical) {
+      padding: $--carousel-indicator-padding-vertival #{$--carousel-indicator-padding-horizontal / 2};
+      width: $--carousel-indicator-height;
+      height: #{$--carousel-indicator-width / 2};
+
+      .#{$namespace}-carousel__button {
+        width: $--carousel-indicator-height;
+        height: #{$--carousel-indicator-width / 2};
+      }
+    }
+  }
+
+  @include e(button) {
+    width: $--carousel-indicator-width;
+    height: $--carousel-indicator-height;
+    border: none;
+    background-color: $--fill-color-grade-4;
+  }
+}
+
+.carousel-arrow-left-enter,
+.carousel-arrow-left-leave-active {
+  transform: translateX(-10px) translateY(-50%);
+  opacity: 0;
+}
+
+.carousel-arrow-right-enter,
+.carousel-arrow-right-leave-active {
+  transform: translateX(10px) translateY(-50%);
+  opacity: 0;
+}
