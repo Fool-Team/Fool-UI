@@ -1,0 +1,21 @@
+@use './mixins/config.scss' as *;
+@use './mixins/mixin.scss' as *;
+
+@include b(carousel) {
+  @include e(item) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    overflow-y: hidden;
+    display: inline-block;
+    align-items: center;
+    text-align: center;
+
+    z-index: 1;
+
+    @include when(animating) {
+      transition: transform 1.5s;
+    }
+  }
+}

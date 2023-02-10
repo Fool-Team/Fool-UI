@@ -21,6 +21,16 @@
         <fool-button @click="visible = false">取消</fool-button>
       </template>
     </fool-dialog>
+
+    <fool-row style="marginTop: 40px">
+      <fool-col :span="12" :offset="6">
+        <fool-carousel :height="180" trigger="click" direction="vertical">
+          <fool-carousel-item v-for="i in 5" :key="i">
+            <h3 style="lineHeight: 100px; margin: 0">{{ i }}</h3>
+          </fool-carousel-item>
+        </fool-carousel>
+      </fool-col>
+    </fool-row>
   </div>
 </template>
 <script>
@@ -34,3 +44,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+</style>
