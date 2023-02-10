@@ -19,6 +19,7 @@ module.exports = {
         'button-zh-CN',
         'icon-zh-CN',
         'layout-zh-CN',
+        'carousel-zh-CN',
       ],
     }
   },
