@@ -6,6 +6,9 @@ import responsiveLayout from '../../examples/layout/responsive-layout.vue'
 import basicCarousel from '../../examples/carousel/basic-carousel.vue'
 import toggleArrows from '../../examples/carousel/toggle-arrows.vue'
 import verticalCarousel from '../../examples/carousel/vertical-carousel.vue'
+import basicIcon from '../../examples/icon/basic.icon.vue'
+import badgeIcon from '../../examples/icon/badge-icon.vue'
+import iconCollections from '../../examples/icon/icon-collections.vue'
 
 const components = [];
 [
@@ -16,7 +19,10 @@ const components = [];
   responsiveLayout,
   basicCarousel,
   toggleArrows,
-  verticalCarousel
+  verticalCarousel,
+  basicIcon,
+  badgeIcon,
+  iconCollections
 ].forEach(component => {
   components.push({ name: component.name, component })
 })
