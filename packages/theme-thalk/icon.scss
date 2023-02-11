@@ -1,0 +1,41 @@
+@use './mixins/mixin.scss' as *;
+@use './fonts/iconfont.scss' as *;
+@import './common/var.scss';
+
+@include b(icon) {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1;
+}
+
+@include b(badge) {
+  // min-width: 12px;
+  line-height: $--fool-badge-line-height;
+  background-color: $--red;
+  color: $--white;
+  font-size: $--fool-badge-font-size;
+  font-weight: $--font-weight-bold;
+  padding: $--fool-badge-padding;
+  border-radius: $--fool-border-radius-max;
+  white-space: nowrap;
+
+  @include m(wrapper) {
+    position: relative;
+  }
+
+  @include m(dot) {
+    width: $--fool-badge-dot-size;
+    height: $--fool-badge-dot-size;
+  }
+
+  @include m(fixed) {
+    position: absolute;
+    transform-origin: 100%;
+  }
+
+  @include m(top-right) {
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+  }
+}
