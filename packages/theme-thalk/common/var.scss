@@ -1,10 +1,10 @@
 // 主色
-$--color-promary: rgb(51,172,227);
+$--color-promary: rgb(51, 172, 227);
 
 // 辅助色
-$--color-success: rgb(139,204,98);
-$--color-danger: rgb(237,87,76);
-$--color-warning: rgb(245,126,36);
+$--color-success: rgb(139, 204, 98);
+$--color-danger: rgb(237, 87, 76);
+$--color-warning: rgb(245, 126, 36);
 $--color-info: rgb(128, 128, 128);
 
 // 中性色
@@ -18,13 +18,43 @@ $--fill-color-grade-2: #E4E7ED; // 二级边框
 $--fill-color-grade-3: #EBEEF5; // 三级边框
 $--fill-color-grade-4: #F2F6FC; // 四级边框
 
+$--fool-border-color-grade-1: #dcdfe6;
+$--fool-border-color-grade-2: #e4e7ed;
+$--fool-border-color-grade-3: #ebeef5;
+$--fool-border-color-grade-4: #f2f6fc;
+// $--fool-border-color-dark: #d4d7de;
+// $--fool-border-color-darker: #cdd0d6;
+
 $--black: #000000;
 $--white: #ffffff;
+$--red: #ff0000;
+
+$--font-size-xs: 10px;
+$--font-size-sm: 12px;
+$--font-size-md: 14px;
+$--font-size-lg: 16px;
+
+$--font-weight-bold: 500;
+
+$--fool-border-width-base: 1px;
+$--fool-border-radius-sm: 2px;
+$--fool-border-radius-md: 4px;
+$--fool-border-radius-lg: 8px;
+$--fool-border-radius-max: 999px;
+
 
 $--carousel-indicator-width: 30px;
 $--carousel-indicator-height: 2px;
 $--carousel-indicator-padding-horizontal: 12px;
 $--carousel-indicator-padding-vertival: 4px;
+
+$--fool-icon-height: 1em;
+$--fool-icon-width: 1em;
+
+$--fool-badge-dot-size: 8px;
+$--fool-badge-font-size: $--font-size-sm;
+$--fool-badge-line-height: 1.2;
+$--fool-badge-padding: 0 3px;
 
 // Break-point 断点（!default作用，避免变量被再次修改）
 $sm: 768px !default;

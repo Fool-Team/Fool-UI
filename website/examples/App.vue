@@ -6,9 +6,7 @@
     <fool-button type="info" icon="bluetooth_link"></fool-button>
     <fool-button type="danger" icon="addto"></fool-button>
     <fool-button type="warning" icon="audio"></fool-button>
-    <fool-button type="primary" @click="visible = true" round resource debounce
-      >dialog开关</fool-button
-    >
+    <fool-button type="primary" @click="visible = true" round resource debounce>dialog开关</fool-button>
     <fool-dialog top="10%" :visible.sync="visible">
       <template v-slot:title>hello</template>
       <ul>
@@ -22,22 +20,25 @@
       </template>
     </fool-dialog>
 
-    <fool-row style="marginTop: 40px">
-      <fool-col :span="12" :offset="6">
-        <fool-carousel :height="180" trigger="click" direction="vertical">
-          <fool-carousel-item v-for="i in 5" :key="i">
-            <h3 style="lineHeight: 100px; margin: 0">{{ i }}</h3>
-          </fool-carousel-item>
-        </fool-carousel>
-      </fool-col>
-    </fool-row>
+    <div class="icon-table">
+      <div class="table-row">
+        <fool-icon class="table-cell" name="bluetoothoff" size="32px" color="red" dot :badge="10" />
+        <fool-icon class="table-cell" name="bluetoothoff" size="32px" dot badge="有新消息" />
+        <fool-icon class="table-cell" name="face" size="32px" dot badge="99+" />
+      </div>
+      <div class="table-row">
+        <fool-icon class="table-cell" name="bluetoothoff" size="32px" color="red" dot :badge="10" />
+        <fool-icon class="table-cell" name="bluetoothoff" size="32px" dot badge="有新消息" />
+        <fool-icon class="table-cell" name="face" size="32px" dot badge="99+" />
+      </div>
+    </div>
   </div>
 </template>
 <script>
 export default {
   name: 'App',
   components: {},
-  data() {
+  data () {
     return {
       visible: false
     }
@@ -50,5 +51,17 @@ html,
 body {
   padding: 0;
   margin: 0;
+}
+
+.icon-table {
+  display: table;
+}
+
+.table-row {
+  display: table-row;
+}
+
+.table-cell {
+  display: table-cell;
 }
 </style>
