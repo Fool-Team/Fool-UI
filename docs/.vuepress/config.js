@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
   title: 'fool UI',
   description: '一个拟态风格的 UI 组件库',
-  base: 'docs',
   themeConfig: {
     // displayAllHeaders: true, // 默认值：false
     nav: [
