@@ -21,6 +21,7 @@ module.exports = {
         'icon-zh-CN',
         'layout-zh-CN',
         'carousel-zh-CN',
+        'card-zh-CN',
       ],
     }
   },
