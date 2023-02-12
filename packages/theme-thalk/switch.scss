@@ -1,0 +1,101 @@
+@use './mixins/mixin.scss' as *;
+@use './mixins/config.scss' as *;
+@use './common/var.scss' as *;
+.switch {
+  --line: #e8ebfb;
+  --dot: #33ace3;
+  --circle: #ed574c;
+  --background: #fff;
+  --duration: 0.3s;
+  --text: #9ea0be;
+  --shadow: 0 1px 3px rgba(0, 9, 61, 0.08);
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.switch:before {
+  content: '';
+  width: 40px;
+  height: 20px;
+  border-radius: 11px;
+  background: var(--background);
+  position: absolute;
+  left: 0;
+  top: 0;
+  box-shadow: var(--shadow);
+}
+
+.switch input {
+  display: none;
+}
+
+.switch input + div {
+  position: relative;
+}
+
+.switch input + div:before,
+.switch input + div:after {
+  --s: 1;
+  content: '';
+  position: absolute;
+  height: 3px;
+  top: 9.3px;
+  width: 16px;
+  background: var(--line);
+  transform: scaleX(var(--s));
+  transition: transform var(--duration) ease;
+}
+
+.switch input + div:before {
+  --s: 0;
+  left: 3px;
+  transform-origin: 0 50%;
+  border-radius: 2px 0 0 2px;
+}
+
+.switch input + div:after {
+  left: 21px;
+  transform-origin: 100% 50%;
+  border-radius: 0 2px 2px 0;
+}
+
+.switch input + div span {
+  padding-left: 40px;
+  line-height: 18.5px;
+  color: var(--text);
+}
+
+.switch input + div span:before {
+  --x: 0;
+  --b: var(--circle);
+  --s: 3px;
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 var(--s) var(--b);
+  transform: translateX(var(--x));
+  transition: box-shadow var(--duration) ease, transform var(--duration) ease;
+}
+
+.switch input + div span:not(:empty) {
+  padding-left: 45px;
+}
+
+.is-switch1 input + div:before {
+  --s: 1;
+}
+
+.is-switch1 input + div:after {
+  --s: 0;
+}
+
+.is-switch1 input + div span:before {
+  --x: 18.5px;
+  --s: 8px;
+  --b: var(--dot);
+}
