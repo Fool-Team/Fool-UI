@@ -16,6 +16,7 @@ import Col from './components/col/col.vue'
 import Carousel from './components/carousel/carousel.vue'
 import CarouselItem from './components/carousel/carousel-item.vue'
 import Icon from './components/icon/icon.vue'
+import Card from './components/card/card.vue'
 import './theme-thalk/fonts/iconfont.css';
 import './theme-thalk/fonts/iconfont.scss';
 import './theme-thalk/common/reset.scss';
@@ -35,7 +36,8 @@ const components = [
   Col,
   Carousel,
   CarouselItem,
-  Icon
+  Icon,
+  Card
 ]
 // 定义install方法
 const install = function (Vue) {
