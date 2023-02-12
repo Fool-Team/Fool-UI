@@ -42,6 +42,11 @@ $--fool-border-radius-md: 4px;
 $--fool-border-radius-lg: 8px;
 $--fool-border-radius-max: 999px;
 
+$--fool-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, .04), 0px 8px 20px rgba(0, 0, 0, .08);
+$--fool-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, .12);
+$--fool-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, .12);
+$--fool-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, .08), 0px 12px 32px rgba(0, 0, 0, .12), 0px 8px 16px -8px rgba(0, 0, 0, .16);
+
 
 $--carousel-indicator-width: 30px;
 $--carousel-indicator-height: 2px;
@@ -55,6 +60,10 @@ $--fool-badge-dot-size: 8px;
 $--fool-badge-font-size: $--font-size-sm;
 $--fool-badge-line-height: 1.2;
 $--fool-badge-padding: 0 3px;
+
+$--fool-card-border-width: $--fool-border-width-base;
+$--fool-card-border-color: $--fill-color-grade-2;
+$--fool-card-padding: 20px;
 
 // Break-point 断点（!default作用，避免变量被再次修改）
 $sm: 768px !default;
