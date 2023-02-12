@@ -6,7 +6,9 @@
     <fool-button type="info" icon="bluetooth_link"></fool-button>
     <fool-button type="danger" icon="addto"></fool-button>
     <fool-button type="warning" icon="audio"></fool-button>
-    <fool-button type="primary" @click="visible = true" round resource debounce>dialog开关</fool-button>
+    <fool-button type="primary" @click="visible = true" round resource debounce
+      >dialog开关</fool-button
+    >
     <fool-dialog top="10%" :visible.sync="visible">
       <template v-slot:title>hello</template>
       <ul>
@@ -19,28 +21,17 @@
         <fool-button @click="visible = false">取消</fool-button>
       </template>
     </fool-dialog>
-
-    <div class="icon-table">
-      <div class="table-row">
-        <fool-icon class="table-cell" name="bluetoothoff" size="32px" color="red" dot :badge="10" />
-        <fool-icon class="table-cell" name="bluetoothoff" size="32px" dot badge="有新消息" />
-        <fool-icon class="table-cell" name="face" size="32px" dot badge="99+" />
-      </div>
-      <div class="table-row">
-        <fool-icon class="table-cell" name="bluetoothoff" size="32px" color="red" dot :badge="10" />
-        <fool-icon class="table-cell" name="bluetoothoff" size="32px" dot badge="有新消息" />
-        <fool-icon class="table-cell" name="face" size="32px" dot badge="99+" />
-      </div>
-    </div>
+    <fool-switch v-model="active"></fool-switch>
   </div>
 </template>
 <script>
 export default {
   name: 'App',
   components: {},
-  data () {
+  data() {
     return {
-      visible: false
+      visible: false,
+      active: true
     }
   }
 }
