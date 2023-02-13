@@ -1,0 +1,21 @@
+@import './common/var.scss';
+@import './mixin/config.scss';
+
+
+.common-layout {
+  .#{$namespace}-header {
+    background-color: $--fool-color-primary-light-7;
+  }
+
+  .#{$namespace}-aside {
+    background-color: $--fool-color-primary-light-5;
+  }
+
+  .#{$namespace}-main {
+    background-color: $--fool-color-primary-light-9;
+  }
+
+  .#{$namespace}-footer {
+    background-color: $--fool-color-primary-light-7;
+  }
+}
