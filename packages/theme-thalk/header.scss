@@ -1,0 +1,9 @@
+@use './mixins/mixin.scss' as *;
+
+@include b(header) {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
