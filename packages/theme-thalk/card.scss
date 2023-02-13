@@ -1,0 +1,29 @@
+@use './mixins/mixin.scss' as *;
+@import './common/var.scss';
+@import './mixins/config.scss';
+
+@include b(card) {
+  border: $--fool-card-border-width solid $--fool-card-border-color;
+  box-sizing: border-box;
+
+  @include e(header) {
+    padding: $--fool-card-padding - 2px $--fool-card-padding;
+    border-bottom: $--fool-card-border-width solid $--fool-card-border-color;
+    align-items: center;
+  }
+
+  @include e(body) {
+    padding: $--fool-card-padding;
+    align-items: center;
+  }
+
+  @include when(always-shadow) {
+    box-shadow: $--fool-box-shadow-light;
+  }
+
+  @include when(hover-shadow) {
+    &:hover.#{$namespace}-card {
+      box-shadow: $--fool-box-shadow-light;
+    }
+  }
+}

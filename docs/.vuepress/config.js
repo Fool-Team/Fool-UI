@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   title: 'fool UI',
   description: '一个拟态风格的 UI 组件库',
-  base: 'docs',
+  base: '/Fool-docs/',
   themeConfig: {
     // displayAllHeaders: true, // 默认值：false
     nav: [
@@ -21,6 +21,7 @@ module.exports = {
         'icon-zh-CN',
         'layout-zh-CN',
         'carousel-zh-CN',
+        'card-zh-CN',
       ],
     }
   },
