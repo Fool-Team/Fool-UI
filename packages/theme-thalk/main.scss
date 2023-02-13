@@ -1,0 +1,10 @@
+@use './mixins/mixin.scss' as *;
+
+@include b(main) {
+  flex: 1;
+  flex-basis: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
