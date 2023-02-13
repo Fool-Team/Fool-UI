@@ -1,12 +1,13 @@
 <template>
   <div id="app">
-    <fool-card class="box-card" shadow="always">
-      <template #header>header</template>
-      <div v-for="i in 4" :key="i">List Item {{i}}</div>
-    </fool-card>
-    <fool-card class="box-card" shadow="hover" header="这是 props 传入的 header">
-      <div v-for="i in 4" :key="i">List Item {{i}}</div>
-    </fool-card>
+    <fool-container>
+      <fool-header>header</fool-header>
+      <fool-container>
+        <fool-aside style="width: 200px;">aside</fool-aside>
+        <fool-main>main</fool-main>
+      </fool-container>
+      <fool-footer>footer</fool-footer>
+    </fool-container>
   </div>
 </template>
 <script>
@@ -27,12 +28,5 @@ html,
 body {
   padding: 0;
   margin: 0;
-}
-
-.box-card {
-  width: 400px;
-}
-.box-card:not(:last-child) {
-  margin-bottom: 20px;
 }
 </style>
