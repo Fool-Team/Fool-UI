@@ -13,6 +13,13 @@ import basicCard from '../../examples/card/basic-card.vue';
 import easyCard from '../../examples/card/easy-card.vue';
 import cardWithContent from '../../examples/card/card-with-content.vue';
 import shadowCard from '../../examples/card/shadow-card.vue';
+import layoutHm from '../../examples/container/layout-hm.vue';
+import layoutHmf from '../../examples/container/layout-hmf.vue';
+import layoutAm from '../../examples/container/layout-am.vue';
+import layoutHam from '../../examples/container/layout-ham.vue';
+import layoutHamf from '../../examples/container/layout-hamf.vue';
+import layoutAhm from '../../examples/container/layout-ahm.vue';
+import layoutAhmf from '../../examples/container/layout-ahmf.vue';
 
 const components = [];
 [
@@ -30,7 +37,14 @@ const components = [];
   basicCard,
   easyCard,
   cardWithContent,
-  shadowCard
+  shadowCard,
+  layoutHm,
+  layoutHmf,
+  layoutAm,
+  layoutHam,
+  layoutHamf,
+  layoutAhm,
+  layoutAhmf
 ].forEach(component => {
   components.push({ name: component.name, component })
 })
