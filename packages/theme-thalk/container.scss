@@ -1,0 +1,15 @@
+@use './mixins/mixin.scss' as *;
+
+@include b(container) {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  flex: 1;
+  flex-basis: auto;
+  min-width: 0;
+
+  @include when(vertical) {
+    flex-direction: column;
+  }
+}
