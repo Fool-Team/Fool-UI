@@ -1,20 +1,15 @@
 <template>
   <div id="app">
-    <fool-container>
-      <fool-header>header</fool-header>
-      <fool-container>
-        <fool-aside style="width: 200px;">aside</fool-aside>
-        <fool-main>main</fool-main>
-      </fool-container>
-      <fool-footer>footer</fool-footer>
-    </fool-container>
+    <fool-checkbox></fool-checkbox>
+    <fool-button circle>hello</fool-button>
+    <fool-input></fool-input>
   </div>
 </template>
 <script>
 export default {
   name: 'App',
   components: {},
-  data () {
+  data() {
     return {
       visible: false,
       active: true
