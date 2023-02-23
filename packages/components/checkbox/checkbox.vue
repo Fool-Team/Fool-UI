@@ -1,29 +1,33 @@
 <template>
-  <label class="fool-checkbox" :class="{ ' is-checked': isChecked }">
-    <span class="fool-checkbox_input">
-      <span class="fool-checkbox_inner"></span>
-      <input
-        type="checkbox"
-        class="fool-checkbox_original"
-        :name="name"
-        v-model="model"
-        :value="label"
-      />
-    </span>
-    <span class="fool-checkbox_label">
-      <slot></slot>
-      <template v-if="!$slots.default">
-        {{ label }}
-      </template>
-    </span>
-  </label>
+  <div class="wrapper">
+    <ul>
+      <li>
+        <p>Gender:</p>
+      </li>
+      <li><input type="radio" name="radio-btn" />Male</li>
+      <li><input type="radio" name="radio-btn" />Female</li>
+    </ul>
+    <ul>
+      <li>
+        <p>Favorite music:</p>
+      </li>
+      <li><input type="checkbox" name="check-box" /> <span>Pop music</span></li>
+      <li>
+        <input type="checkbox" name="check-box" /> <span>Rock music</span>
+      </li>
+      <li><input type="checkbox" name="check-box" /> <span>Rap music</span></li>
+      <li>
+        <input type="checkbox" name="check-box" /> <span>Hiphop music</span>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 export default {
-  name: "foolCheckbox",
+  name: 'foolCheckbox',
   inject: {
     CheckboxGroup: {
-      default: ""
+      default: ''
     }
   },
   props: {
@@ -33,115 +37,224 @@ export default {
     },
     label: {
       type: String,
-      default: ""
+      default: ''
     },
     name: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   computed: {
     model: {
       get() {
-        return this.isGroup ? this.CheckboxGroup.value : this.value;
+        return this.isGroup ? this.CheckboxGroup.value : this.value
       },
       set(value) {
         this.isGroup
-          ? this.CheckboxGroup.$emit("input", value)
-          : this.$emit("input", value);
-        console.log(value);
+          ? this.CheckboxGroup.$emit('input', value)
+          : this.$emit('input', value)
+        console.log(value)
       }
     },
     isGroup() {
-      return !!this.CheckboxGroup;
+      return !!this.CheckboxGroup
     },
     isChecked() {
       // 如果十group包裹，判断label是否在model中
       // 如果没有group包裹,直接使用model
-      return this.isGroup ? this.model.includes(this.label) : this.model;
+      return this.isGroup ? this.model.includes(this.label) : this.model
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-.fool-checkbox {
-  color: #606266;
-  font-weight: 500;
-  font-size: 14px;
-  position: relative;
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #e4e1ea;
+  font: normal 17px/1.5 Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial,
+    sans-serif;
+  color: #5e5f63;
+}
+.wrapper {
+  width: 200px;
+  margin: 20px auto;
+}
+p {
+  margin: 15px 0 5px 0;
+}
+li span {
+  display: inline-block;
+  vertical-align: top;
+}
+strong {
+  font-weight: bold;
+}
+.radio-btn input[type='radio'],
+.check-box input[type='checkbox'] {
+  visibility: hidden;
+}
+/*Custom checkbox*/
+.check-box {
+  width: 22px;
+  height: 22px;
   cursor: pointer;
   display: inline-block;
-  white-space: nowrap;
-  user-select: none;
-  margin-right: 30px;
-  .fool-checkbox_input {
-    white-space: nowrap;
-    cursor: pointer;
-    outline: none;
-    display: inline-block;
-    line-height: 1;
-    position: relative;
-    vertical-align: middle;
-    .fool-checkbox_inner {
-      display: inline-block;
-      position: relative;
-      border: 1px solid #dcdfe6;
-      border-radius: 2px;
-      box-sizing: border-box;
-      width: 14px;
-      height: 14px;
-      background-color: #fff;
-      z-index: 1;
-      transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
-        background-color 0.25s, cubic-bezier(0.71, -0.46, 0.29, 1.46);
-      &:after {
-        box-sizing: content-box;
-        content: "";
-        border: 1px solid #ffffff;
-        border-left: 0;
-        border-top: 0;
-        height: 7px;
-        left: 4px;
-        position: absolute;
-        top: 1px;
-        transform: rotate(45deg) scaleY(0);
-        width: 3px;
-        transition: transform 0.15s ease-in 0.05s;
-        transform-origin: center;
-      }
-    }
-    .fool-checkbox_original {
-      opacity: 0;
-      outline: none;
-      position: absolute;
-      left: 10px;
-      margin: 0;
-      width: 0;
-      height: 0;
-      z-index: -1;
-    }
-  }
-  .fool-checkbox_label {
-    display: inline-block;
-    padding-left: 10px;
-    line-height: 19px;
-    font-size: 14px;
-  }
+  margin: 2px 7px 0 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 1px #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: rgb(255, 255, 255);
+  background: -moz-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(255, 255, 255, 1)),
+    color-stop(47%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(237, 237, 237, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
+  border: 1px solid #ccc;
 }
-// 选中的样式
-.fool-checkbox.is-checked {
-  .fool-checkbox_input {
-    .fool-checkbox_inner {
-      background-color: #409eff;
-      border-color: #409eff;
-    }
-    &:after {
-      transform: rotate(45deg) scaleY(1);
-    }
-  }
-  .fool-checkbox_label {
-    color: #409eff;
-  }
+.check-box i {
+  background: url('http://cdn1.iconfinder.com/data/icons/mimiGlyphs/16/check_mark.png')
+    no-repeat center center;
+  position: absolute;
+  left: 3px;
+  bottom: -15px;
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  -webkit-transition: all 400ms ease-in-out;
+  -moz-transition: all 400ms ease-in-out;
+  -o-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+  -webkit-transform: rotateZ(-180deg);
+  -moz-transform: rotateZ(-180deg);
+  -o-transform: rotateZ(-180deg);
+  transform: rotateZ(-180deg);
+}
+.checkedBox {
+  -moz-box-shadow: inset 0 0 5px 1px #ccc;
+  -webkit-box-shadow: inset 0 0 5px 1px #ccc;
+  box-shadow: inset 0 0 5px 1px #ccc;
+  border-bottom-color: #fff;
+}
+.checkedBox i {
+  bottom: 2px;
+  -webkit-transform: rotateZ(0deg);
+  -moz-transform: rotateZ(0deg);
+  -o-transform: rotateZ(0deg);
+  transform: rotateZ(0deg);
+}
+/*Custom radio button*/
+.radio-btn {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  float: left;
+  margin: 3px 7px 0 0;
+  cursor: pointer;
+  position: relative;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 1px #ccc;
+  background: rgb(255, 255, 255);
+  background: -moz-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, rgba(255, 255, 255, 1)),
+    color-stop(47%, rgba(246, 246, 246, 1)),
+    color-stop(100%, rgba(237, 237, 237, 1))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: -o-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    top,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(246, 246, 246, 1) 47%,
+    rgba(237, 237, 237, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed', GradientType=0);
+}
+.checkedRadio {
+  -moz-box-shadow: inset 0 0 5px 1px #ccc;
+  -webkit-box-shadow: inset 0 0 5px 1px #ccc;
+  box-shadow: inset 0 0 5px 1px #ccc;
+}
+.radio-btn i {
+  border: 1px solid #e1e2e4;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+.checkedRadio i {
+  background-color: #898a8c;
 }
 </style>
