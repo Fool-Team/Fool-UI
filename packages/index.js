@@ -22,9 +22,13 @@ import Header from './components/container/header.vue'
 import Aside from './components/container/aside.vue'
 import Main from './components/container/main.vue'
 import Footer from './components/container/footer.vue'
-import './theme-thalk/fonts/iconfont.css';
-import './theme-thalk/fonts/iconfont.scss';
-import './theme-thalk/common/reset.scss';
+import FoolDateTimePicker from '../packages/components/datetime/fool-dateTimePicker.vue'
+import UsePicker from '../packages/components/datetime/usePicker.vue'
+import DatePicker from '../packages/components/datetime/DatePicker.vue'
+import DatePicker1 from '../packages/components/datetime/DatePicker1.vue'
+import './theme-thalk/fonts/iconfont.css'
+import './theme-thalk/fonts/iconfont.scss'
+import './theme-thalk/common/reset.scss'
 
 const components = [
   Button,
@@ -47,10 +51,14 @@ const components = [
   Header,
   Aside,
   Main,
-  Footer
+  Footer,
+  FoolDateTimePicker,
+  UsePicker,
+  DatePicker,
+  DatePicker1
 ]
 // 定义install方法
-const install = function (Vue) {
+const install = function(Vue) {
   // 注册所有的组件
   components.forEach(component => {
     Vue.component(component.name, component)
