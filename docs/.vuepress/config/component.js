@@ -22,6 +22,7 @@ import layoutAhm from '../../examples/container/layout-ahm.vue'
 import layoutAhmf from '../../examples/container/layout-ahmf.vue'
 import inputpwh from '../../examples/input/input.vue'
 import datetime from '../../examples/datetime/datetime.vue'
+import switchpwh from '../../examples/switch/switch.vue'
 const components = []
 ;[
   basicLayout,
@@ -47,7 +48,8 @@ const components = []
   layoutAhm,
   layoutAhmf,
   inputpwh,
-  datetime
+  datetime,
+  switchpwh
 ].forEach(component => {
   components.push({ name: component.name, component })
 })
