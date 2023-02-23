@@ -5,16 +5,16 @@
 </template>
 <script>
 export default {
-  name: "foolCheckboxGroup",
+  name: 'foolCheckboxGroup',
   provide() {
     return {
       CheckboxGroup: this
-    };
+    }
   },
   props: {
     value: {
       type: Array
     }
   }
-};
+}
 </script>

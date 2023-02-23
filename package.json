@@ -1,60 +1,62 @@
 {
-    "name": "fool-ui",
-    "version": "0.1.5",
-    "private": false,
-    "main": "dist/fool-ui.umd.min.js",
-    "author": {
-        "name": "foolTeam"
+  "name": "fool-ui",
+  "version": "0.1.5",
+  "private": false,
+  "main": "dist/fool-ui.umd.min.js",
+  "author": {
+    "name": "foolTeam"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib packages/index.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "core-js": "^3.6.4",
+    "eslint": "^6.8.0",
+    "vue": "^2.7.14"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.2.0",
+    "@vue/cli-plugin-eslint": "^4.2.0",
+    "@vue/cli-service": "^4.2.0",
+    "@vue/eslint-config-standard": "^5.1.0",
+    "babel-eslint": "^10.0.3",
+    "browserslist": "^4.21.5",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.1.2",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.7.14",
+    "vuepress": "^1.9.8"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
     },
-    "scripts": {
-        "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint",
-        "lib": "vue-cli-service build --target lib packages/index.js",
-        "docs:dev": "vuepress dev docs",
-        "docs:build": "vuepress build docs"
-    },
-    "dependencies": {
-        "core-js": "^3.6.4",
-        "eslint": "^6.8.0",
-        "vue": "^2.7.14"
-    },
-    "devDependencies": {
-        "@vue/cli-plugin-babel": "^4.2.0",
-        "@vue/cli-plugin-eslint": "^4.2.0",
-        "@vue/cli-service": "^4.2.0",
-        "@vue/eslint-config-standard": "^5.1.0",
-        "babel-eslint": "^10.0.3",
-        "browserslist": "^4.21.5",
-        "eslint-plugin-import": "^2.20.1",
-        "eslint-plugin-node": "^11.0.0",
-        "eslint-plugin-promise": "^4.2.1",
-        "eslint-plugin-standard": "^4.0.0",
-        "eslint-plugin-vue": "^6.1.2",
-        "sass": "^1.25.0",
-        "sass-loader": "^8.0.2",
-        "vue-template-compiler": "^2.7.14",
-        "vuepress": "^1.9.8"
-    },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "@vue/standard"
-        ],
-        "parserOptions": {
-            "parser": "babel-eslint"
-        },
-        "rules": {}
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions"
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
     ],
-    "workspaces": [
-        "packages/*"
-    ]
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "space-before-function-paren": 0
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "workspaces": [
+    "packages/*"
+  ]
 }

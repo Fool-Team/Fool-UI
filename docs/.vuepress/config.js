@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   title: 'fool UI',
@@ -9,13 +9,10 @@ module.exports = {
     nav: [
       { text: '指南', link: '/guide/' },
       { text: '组件', link: '/spec/' },
-      { text: 'GitHub', link: 'https://github.com/Fool-Team/Fool-UI' },
+      { text: 'GitHub', link: 'https://github.com/Fool-Team/Fool-UI' }
     ],
     sidebar: {
-      '/guide/': [
-        '',
-        'guide',
-      ],
+      '/guide/': ['', 'guide'],
       '/spec/': [
         'button-zh-CN',
         'icon-zh-CN',
@@ -23,13 +20,16 @@ module.exports = {
         'carousel-zh-CN',
         'card-zh-CN',
         'container-zh-CN',
-      ],
+        'input-zh-CN',
+        'datetime-zh-CN',
+        'switch-zh-CN'
+      ]
     }
   },
   configureWebpack: {
     resolve: {
       alias: {
-        '@docs': path.resolve(__dirname, '/docs/'),
+        '@docs': path.resolve(__dirname, '/docs/')
       }
     }
   }

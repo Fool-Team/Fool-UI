@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <fool-checkbox></fool-checkbox>
-    <fool-button circle>hello</fool-button>
+    <fool-button circle>好</fool-button>
     <fool-input></fool-input>
+    <picker-test></picker-test>
   </div>
 </template>
 <script>
